@@ -19,12 +19,22 @@ const LOGIN_MUTATION = gql`
     }
 `
 
-const Login = () => {
+const Login = (props) => {
     
     const [ login, setLogin ] = useState(true)
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
     const [ name, setName ] = useState('')
+
+    const _confirm = async data => {
+        const { token } = login ? data.login : data.signup
+        _saveUserData(token)
+        props.history.push(`/`)
+      }
+      
+    const _saveUserData = token => {
+        localStorage.setItem(AUTH_TOKEN, token)
+    }
 
     return (
         <div>
@@ -55,7 +65,7 @@ const Login = () => {
                 <Mutation
                     mutation={login ? LOGIN_MUTATION : SIGNUP_MUTATION}
                     variables={{ email, password, name }}
-                    onCompleted={data => this._confirm(data)}
+                    onCompleted={data => _confirm(data)}
                     >
                     {mutation => (
                     <div className="pointer mr2 button" onClick={mutation}>
@@ -75,16 +85,5 @@ const Login = () => {
         </div>
       )
     }
-
-//THESE TWO MAY NEED TO BE PLACED INSIDE THE LOGIN FUNCTION BEFORE LAST CLOSING BRACKET
-// _confirm = async data => {
-//     const { token } = this.state.login ? data.login : data.signup
-//     this._saveUserData(token)
-//     this.props.history.push(`/`)
-//   }
-  
-// _saveUserData = token => {
-//     localStorage.setItem(AUTH_TOKEN, token)
-// }
 
 export default Login
