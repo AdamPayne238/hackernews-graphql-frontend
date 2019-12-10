@@ -12,6 +12,6 @@ datamodel.prisma defines your data model in the GraphQL Schema Definition Langua
 src: This directory holds the source files for your GraphQL server.
 
  - schema.graphql contains your application schema. The application schema defines the GraphQL operations you can send from the frontend. We’ll take a closer look at this file in just a bit.
-generated/prisma-client contains the auto-generated Prisma client, a type-safe database access library (similar to an ORM).
+generated/prisma-client contains the auto-generated Prisma client, a type-safe database access  library (similar to an ORM).
 resolvers contains the resolver functions for the operations defined in the application schema.
 index.js is the entry point for your GraphQL server.

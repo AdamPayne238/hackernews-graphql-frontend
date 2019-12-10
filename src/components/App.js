@@ -1,11 +1,12 @@
 
-import React, { Component } from 'react';
-import '../styles/App.css';
+import React from 'react'
+import LinkList from './LinkList'
+import '../styles/App.css'
 
 function App() {
   return (
     <div className="App">
-      <h1>Yoooo!</h1>
+      <LinkList />
     </div>
   );
 }
