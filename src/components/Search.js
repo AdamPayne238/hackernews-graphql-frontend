@@ -62,6 +62,4 @@ const Search = (props) => {
     )
 }
 
-
-
 export default withApollo(Search)
